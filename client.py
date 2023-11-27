@@ -15,25 +15,24 @@ color = input("Choose your color (R, B, G, W): ")
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(("10.36.19.153", 55555))
 
+if color == 'R':
+    color = Fore.RED
+elif color == 'B':
+    color = Fore.BLUE
+elif color == 'G':
+    color = Fore.GREEN
+else:
+    color = Fore.WHITE
+
 
 # Listening to the server and sending the username
 def receive():
-    global color
     while True:
         try:
             message = client.recv(1024).decode('ascii')
             if message == 'USER':
                 client.send(username.encode('ascii'))
             else:
-                if color == 'R':
-                    color = Fore.RED
-                elif color == 'B':
-                    color = Fore.BLUE
-                elif color == 'G':
-                    color = Fore.GREEN
-                else:
-                    color = Fore.WHITE
-
                 print_with_color(s=message, color=color)
         except:
             # Close connection since there is an error
