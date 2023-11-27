@@ -15,14 +15,16 @@ color = input("Choose your color (R, B, G, W): ")
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(("10.36.19.153", 55555))
 
-if color == 'R':
-    color = Fore.RED
-elif color == 'B':
-    color = Fore.BLUE
-elif color == 'G':
-    color = Fore.GREEN
-else:
-    color = Fore.WHITE
+while True:
+    if color == 'R':
+        color = Fore.RED
+    elif color == 'B':
+        color = Fore.BLUE
+    elif color == 'G':
+        color = Fore.GREEN
+    else:
+        color = Fore.WHITE
+    break
 
 
 # Listening to the server and sending the username
