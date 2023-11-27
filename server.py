@@ -2,7 +2,6 @@ import socket
 import threading
 import datetime
 
-
 # Connection information
 ip = "10.36.19.153"
 port = 55555
@@ -70,5 +69,6 @@ def receive():
         # Start Handling Thread For Client
         thread = threading.Thread(target=handle, args=(client,))
         thread.start()
+
 
 receive()
