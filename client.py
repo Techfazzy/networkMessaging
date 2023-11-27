@@ -1,8 +1,12 @@
 import socket
 import threading
+import datetime
 
 # Choosing a username
 username = input("Choose your username: ")
+
+# Add datetime
+date_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
 # Connecting to the server
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -28,7 +32,7 @@ def receive():
 # Sending messages to the server
 def write():
     while True:
-        message = '{}: {}'.format(username, input(''))
+        message = '{} {}: {}'.format(username, [date_time], input(''))
         client.send(message.encode('ascii'))
 
 
