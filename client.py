@@ -1,10 +1,8 @@
 import socket
 import threading
 import datetime
-import colorama
 from colorama import Fore, init, Style
 
-init()
 # Choosing a username
 username = input("Choose your username: ")
 
@@ -46,10 +44,13 @@ def receive():
 # Sending messages to the server
 def write():
     while True:
-        # Add datetime
-        date_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        message = '{} {}: {}'.format(username, [date_time], input(''))
-        client.send(message.encode('ascii'))
+        try:
+            # Add datetime
+            date_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            message = '{} {}: {}'.format(username, [date_time], input(''))
+            client.send(message.encode('ascii'))
+        except:
+            pass
 
 
 def print_with_color(s, color):
